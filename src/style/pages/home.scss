@@ -1,0 +1,14 @@
+.project-title {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-width: 0.1rem;
+  mix-blend-mode: difference;
+  @apply text-white;
+
+  &:hover {
+    -webkit-text-fill-color: unset;
+    -webkit-text-stroke: unset;
+    -webkit-text-stroke-width: unset;
+    @apply text-white;
+  }
+}

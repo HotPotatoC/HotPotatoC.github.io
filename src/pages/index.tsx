@@ -1,10 +1,11 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import "../style/pages/home.scss"
 
 import SEO from "../components/SEO"
 
-import Hero from "../components/page-components/Hero"
-import Projects from "../components/page-components/Projects"
+import Hero from "../components/page-components/home/Hero"
+import Projects from "../components/page-components/home/Projects"
 
 const Index: React.FC = () => {
   const { image } = useStaticQuery(query)

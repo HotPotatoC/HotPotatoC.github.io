@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { PageProps } from "gatsby"
 import { AnimatePresence } from "framer-motion"
 
@@ -15,6 +15,8 @@ import Transition from "./theming/transition"
 export const Layout: React.FC<PageProps & { children: React.ReactNode }> = (
   props
 ) => {
+  const [transitionFinished, setTransitionFinished] = useState(false)
+
   const size = useWindowSize()
 
   const appRef = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement | null>
@@ -22,14 +24,17 @@ export const Layout: React.FC<PageProps & { children: React.ReactNode }> = (
 
   const updateHeight = () => {
     document.body.style.height = `${
-      (scrollContainerRef as React.MutableRefObject<HTMLDivElement>).current.getBoundingClientRect()
-        .height
+      scrollContainerRef.current?.getBoundingClientRect().height
     }px`
   }
 
   useEffect(() => {
-    updateHeight()
-  }, [size.height, props.location.key])
+    setTransitionFinished(false)
+    if (transitionFinished) {
+      updateHeight()
+      console.log(`Updated: ${document.body.style.height}`)
+    }
+  }, [transitionFinished, size.height, props.location.pathname])
 
   useEffect(() => {
     requestAnimationFrame(() => skewScrolling())
@@ -69,7 +74,12 @@ export const Layout: React.FC<PageProps & { children: React.ReactNode }> = (
           key={`main-${props.location.pathname}`}
           className="fixed top-0 left-0 w-full h-full z-20"
         >
-          <Transition key={`transition-key-${props.location.pathname}`}>
+          <Transition
+            key={`transition-key-${props.location.pathname}`}
+            onAnimationComplete={() => {
+              setTransitionFinished(true)
+            }}
+          >
             <div ref={appRef}>
               <div ref={scrollContainerRef} className="scroll-container">
                 <Header />

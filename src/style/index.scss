@@ -1,24 +1,6 @@
 @import "./abstract/mixins";
 
-@font-face {
-  font-family: "Monument";
-  src: url("../fonts/MonumentExtended-Regular.otf");
-}
-
-@font-face {
-  font-family: "Monument-Ultrabold";
-  src: url("../fonts/MonumentExtended-Ultrabold.otf");
-}
-
-@font-face {
-  font-family: "Axiforma";
-  src: url("../fonts/Axiforma-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Stanley";
-  src: url("../fonts/Stanley.otf");
-}
+@import "./base/typography";
 
 html * {
   cursor: none;
@@ -52,47 +34,6 @@ body {
     top: -100%;
     width: 300%;
     z-index: 5;
-  }
-}
-
-.font-monument-ultrabold {
-  font-family: "Monument-Ultrabold";
-}
-
-.font-stanley {
-  font-family: "Stanley";
-}
-
-.font-axiforma {
-  font-family: "Axiforma";
-}
-
-.project-title {
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px;
-  -webkit-text-stroke-width: 0.1rem;
-  mix-blend-mode: difference;
-  @apply text-white;
-
-  &:hover {
-    -webkit-text-fill-color: unset;
-    -webkit-text-stroke: unset;
-    -webkit-text-stroke-width: unset;
-    @apply text-white;
-  }
-}
-
-.next-text {
-  will-change: transform;
-  animation: marquee 32s linear infinite;
-}
-
-@include keyframes(marquee) {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 

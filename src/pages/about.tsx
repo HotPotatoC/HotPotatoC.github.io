@@ -1,10 +1,19 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
+import "../style/pages/about.scss"
+
 import SEO from "../components/SEO"
 
+import Hero from "../components/page-components/about/Hero"
+import Divider from "../components/page-components/about/Divider"
+
+import ProfileCategory from "../components/page-components/about/ProfileCategory"
+import ToolsCategory from "../components/page-components/about/ToolsCategory"
+import ExperienceCategory from "../components/page-components/about/ExperienceCategory"
+
 const About: React.FC = () => {
-  const { image } = useStaticQuery(query)
+  const { seoImage } = useStaticQuery(query)
   return (
     <>
       <SEO
@@ -21,12 +30,15 @@ const About: React.FC = () => {
           `web programmer`,
         ]}
         title="Home"
-        image={image.childImageSharp.fixed}
+        image={seoImage.childImageSharp.fixed}
       />
       <div className="flex flex-wrap">
-        <div className="w-full mt-52 mb-96">
-          <h1 className="text-9xl">Who am i?</h1>
-        </div>
+        <Hero />
+        <ProfileCategory />
+        <Divider />
+        <ToolsCategory />
+        <Divider />
+        <ExperienceCategory />
       </div>
     </>
   )
@@ -35,8 +47,8 @@ const About: React.FC = () => {
 export default About
 
 const query = graphql`
-  query AboutSEOImage {
-    image: file(relativePath: { eq: "me.jpg" }) {
+  query AboutImage {
+    seoImage: file(relativePath: { eq: "me.jpg" }) {
       id
       childImageSharp {
         fixed(height: 450, width: 500, grayscale: true, cropFocus: EAST) {

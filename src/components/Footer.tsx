@@ -5,7 +5,14 @@ import Container from "./Container"
 export const Footer = () => (
   <Container>
     <div className="flex flex-wrap border-t border-white">
-      <div className="w-full md:w-1/2 mt-24 md:mb-24 md:pb-24">
+      <div className="w-full my-12 md:my-24 pb-12">
+        <OutboundLink className="mb-6" href="mailto:juandotulung@gmail.com">
+          <h1 className="py-6 underline hover:bg-white hover:text-black text-center text-4xl md:text-6xl lg:text-8xl">
+            Contact me 📧
+          </h1>
+        </OutboundLink>
+      </div>
+      <div className="w-full md:w-1/2 mt-12 md:my-24 md:pb-24">
         <button
           className="focus:border-none focus:outline-none"
           onClick={() =>
@@ -30,21 +37,13 @@ export const Footer = () => (
           </div>
         </button>
       </div>
-      <div className="w-full md:w-1/2 my-24 pb-24">
+      <div className="w-full md:w-1/2 mt-12 md:my-24 pb-24">
         <OutboundLink
-          className="mb-6 underline hover:no-underline font-axiforma text-lg md:text-2xl lg:text-4xl"
-          href="mailto:juandotulung@gmail.com"
-        >
-          <h1 className="font-axiforma text-xl md:text-2xl lg:text-4xl">
-            email 📧
-          </h1>
-        </OutboundLink>
-        <OutboundLink
-          className="mb-6 underline hover:no-underline font-axiforma text-lg md:text-2xl lg:text-4xl"
+          className="mb-6"
           target="_blank"
           href="https://github.com/HotPotatoC"
         >
-          <h1 className="font-axiforma text-xl md:text-2xl lg:text-4xl">
+          <h1 className="font-axiforma underline hover:no-underline font-axiforma text-lg md:text-2xl lg:text-4xl">
             github
           </h1>
         </OutboundLink>
@@ -53,7 +52,7 @@ export const Footer = () => (
           target="_blank"
           href="https://www.linkedin.com/in/juan-christian-6415aa1a4/"
         >
-          <h1 className="font-axiforma text-xl md:text-2xl lg:text-4xl">
+          <h1 className="font-axiforma underline hover:no-underline font-axiforma text-lg md:text-2xl lg:text-4xl">
             linkedin
           </h1>
         </OutboundLink>

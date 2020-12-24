@@ -2,14 +2,12 @@ import React from "react"
 import { motion, Variants } from "framer-motion"
 
 interface Props {
-  onAnimationEnd?:
-    | ((event: React.AnimationEvent<HTMLDivElement>) => void)
-    | undefined
+  onAnimationComplete?: () => void
 }
 
 export const Transition: React.FC<Props & { children: React.ReactNode }> = ({
   children,
-  onAnimationEnd,
+  onAnimationComplete,
 }) => {
   const transition = {
     duration: 2.25,
@@ -42,9 +40,7 @@ export const Transition: React.FC<Props & { children: React.ReactNode }> = ({
         animate="enter"
         exit="exit"
         variants={variants}
-        onAnimationComplete={() => {
-          console.log("Transition finished")
-        }}
+        onAnimationComplete={onAnimationComplete}
         className="absolute overflow-hidden bottom-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-black border-r border-white"
       >
         <motion.h1
