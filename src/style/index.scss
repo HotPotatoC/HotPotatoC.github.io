@@ -1,0 +1,131 @@
+@import "./abstract/mixins";
+
+@font-face {
+  font-family: "Monument";
+  src: url("../fonts/MonumentExtended-Regular.otf");
+}
+
+@font-face {
+  font-family: "Monument-Ultrabold";
+  src: url("../fonts/MonumentExtended-Ultrabold.otf");
+}
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("../fonts/Axiforma-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Stanley";
+  src: url("../fonts/Stanley.otf");
+}
+
+html * {
+  cursor: none;
+}
+
+html,
+body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  /* -ms-overflow-style: none; */
+  /* scrollbar-width: none; */
+  height: 100vh;
+  overscroll-behavior-y: none;
+  background: #0a0a0a;
+  font-family: "Monument";
+  color: #f9fafb;
+  user-select: none;
+}
+
+.grain-container {
+  height: 100vh;
+
+  &:after {
+    animation: grain 6s steps(10) infinite;
+    background-image: url("../images/grain.png");
+    content: "";
+    height: 300%;
+    left: -50%;
+    opacity: 0.07;
+    position: fixed;
+    top: -100%;
+    width: 300%;
+    z-index: 5;
+  }
+}
+
+.font-monument-ultrabold {
+  font-family: "Monument-Ultrabold";
+}
+
+.font-stanley {
+  font-family: "Stanley";
+}
+
+.font-axiforma {
+  font-family: "Axiforma";
+}
+
+.project-title {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-width: 0.1rem;
+  mix-blend-mode: difference;
+  @apply text-white;
+
+  &:hover {
+    -webkit-text-fill-color: unset;
+    -webkit-text-stroke: unset;
+    -webkit-text-stroke-width: unset;
+    @apply text-white;
+  }
+}
+
+.next-text {
+  will-change: transform;
+  animation: marquee 32s linear infinite;
+}
+
+@include keyframes(marquee) {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@include keyframes(grain) {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 30%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
